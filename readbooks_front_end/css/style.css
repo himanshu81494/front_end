@@ -1,0 +1,12 @@
+.carousel{
+  background-color: #E1A8C8;
+}
+.card-img-top {
+  max-height: 200px;
+}
+.card-deck > div:nth-child(odd){
+  background-color: #bfeaf2;
+}
+.card-deck > div:nth-child(even){
+  background-color: #f7f7a5;
+}

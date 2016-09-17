@@ -1,0 +1,55 @@
+<div class="continer-fluid col-md-6">
+
+    <div ng-repeat="Alert in alerts">
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+            <strong>{{ Alert.message }}</strong><br />[{{ Alert.status }}] [{{ Alert.gap }}]
+        </div>
+    </div>
+
+    <div class="alert alert-success" role="alert">
+        Found <strong>{{ websites.length }}</strong> results
+    </div>
+
+    <form class="col-xs-12">
+        <div class="form-group row col-xs-10">
+            <input ng-model="searchFilter" class="form-control form-control-lg" type="text" placeholder="Search">
+        </div>
+        <button class="col-xs-2 btn btn-outline-success pull-right" type="submit">Search</button>
+    </form>
+    <form ng-submit="addSuggestion()" style="margin-top:50px">
+        <h3>Submit Your Suggestion</h3>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Title" ng-model="new_title"></input>
+            <input type="text" class="form-control" placeholder="Url" ng-model="new_url"></input>
+            <input type="text" class="form-control" placeholder="Tag" ng-model="new_tag"></input>
+        </div>
+        <button type="submit" class="btn btn-primary">Suggest</button>
+    </form>
+</div>
+
+<br />
+<br />
+
+<div class="card-deck-wrapper col-md-6 container">
+    <div class="main" ng-repeat="website in websites | filter:searchFilter">
+        <div class="card-deck">
+            <div class="card">
+                <img class=" card-img-top col-sm-12 col-md-6 col-xs-4" src="{{ website.favicon_image }}" alt="Card image cap" />
+                <div class="card-block ">
+                    <h4 class="card-title">{{ website.title }}</h4>
+                    <a href="{{ website.url_address }}" target="_blank" class="btn btn-primary pull-right">website</a>
+                    <p class="card-text">
+                        <span class="glyphicon glyphicon-tags">
+        <a href="#/tag/{{ website.tag }}" >{{ website.tag }}</a>
+      </span><br /><br />
+                        <span ng-click="upVote($index)" class="glyphicon glyphicon-thumbs-up">{{ upvotes[$index] }}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end ng-repeat -->
+</div>
