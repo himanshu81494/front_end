@@ -21,7 +21,7 @@
 
 <div class="card-deck-wrapper col-md-6 container">
     <div class="main" ng-repeat="website in websites | filter:searchFilter">
-        <div class="card-deck">
+        <div ng-hide="tagFilter(website.tag)" class="card-deck">
             <div class="card">
                 <img class=" card-img-top col-sm-12 col-md-6 col-xs-4" src="{{ website.favicon_image }}" alt="Card image cap" />
                 <div class="card-block ">
